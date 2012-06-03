@@ -1,5 +1,5 @@
 ################################################################################
-README: vcryptor.c
+README: vcryptor
 ################################################################################
 
 vcryptor is a simple program that allows you to encrypt or decrypt a file based
