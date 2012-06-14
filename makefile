@@ -80,6 +80,7 @@ $(EXEC) : $(LIB) $(MAIN_OBJ)
 	
 # Build the library
 $(LIB) : $(SRC_OBJS)
+	@mkdir -p $(LIB_DIR)
 	@echo Building $@
 	@ar cr $(LIB) $(SRC_OBJS)
 
