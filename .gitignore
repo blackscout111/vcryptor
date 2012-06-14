@@ -1,2 +1,5 @@
-*.exe*
 *~
+*.a
+*.so
+*.o
+vcryptor
