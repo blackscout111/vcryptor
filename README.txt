@@ -10,8 +10,8 @@ For usage instructions compile the program and run it with "- h" as an input.
 The instructions are quite stright forward.
 
 Beware: This program will edit the binary data of a file.  If the passwords for
-encryption and decryption and the correct sequence is forgotton, the files will
-be garbage.  Back up your files.
+encryption and decryption and/or the correct sequence is forgotton, the files
+will be garbage.  Back up your files.
 
 Note: you can also decrypt unencrypted files to effectively encrypt them.
 
