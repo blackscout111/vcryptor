@@ -63,7 +63,7 @@ EXECNAME = vcryptor
 EXEC = $(EXECNAME)
 
 # The libraries to make
-LIB = $(LIB_DIR)/lib$(EXECNAME).a
+LIB = $(LIB_DIR)/lib$(EXECNAME)
 
 
 #===============================================================================
@@ -71,18 +71,18 @@ LIB = $(LIB_DIR)/lib$(EXECNAME).a
 #===============================================================================
 
 # Build the executable
-$(EXEC) : $(LIB) $(MAIN_OBJ)
+$(EXEC) : $(LIB).a $(MAIN_OBJ)
 	@echo Building $@
-	@$(COMPILER) $(CFLAGS) \
+	$(COMPILER) $(CFLAGS) \
 	$(INCLUDE_DIRS) $(LIB_DIRS) \
 	$(MAIN_OBJ) $(LINK_LIBS) -l$(EXECNAME) \
 	-o $(EXEC)
 	
-# Build the library
-$(LIB) : $(SRC_OBJS)
+# Build the static library
+$(LIB).a : $(SRC_OBJS)
 	@mkdir -p $(LIB_DIR)
-	@echo Building $@
-	@ar cr $(LIB) $(SRC_OBJS)
+	@echo Building $@.a
+	ar -cvq $(LIB).a $(SRC_OBJS)
 
 # Build the object file corresponding to the the src file with the main function
 $(MAIN_OBJ) : %.o : $(SRC_DIR)/%.c
