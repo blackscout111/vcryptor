@@ -71,9 +71,9 @@ LIB = $(LIB_DIR)/lib$(EXECNAME)
 #===============================================================================
 
 # Build the executable
-$(EXEC) : $(LIB).a $(MAIN_OBJ)
+$(EXEC) : $(LIB).so $(LIB).a $(MAIN_OBJ)
 	@echo Building $@
-	$(COMPILER) $(CFLAGS) \
+	@$(COMPILER) $(CFLAGS) \
 	$(INCLUDE_DIRS) $(LIB_DIRS) \
 	$(MAIN_OBJ) $(LINK_LIBS) -l$(EXECNAME) \
 	-o $(EXEC)
@@ -81,8 +81,14 @@ $(EXEC) : $(LIB).a $(MAIN_OBJ)
 # Build the static library
 $(LIB).a : $(SRC_OBJS)
 	@mkdir -p $(LIB_DIR)
-	@echo Building $@.a
-	ar -cvq $(LIB).a $(SRC_OBJS)
+	@echo Building $@
+	@ar cr $(LIB).a $(SRC_OBJS)
+	
+# Build the shared library
+$(LIB).so : $(SRC_OBJS)
+	@mkdir -p $(LIB_DIR)
+	@echo Building $@
+	@$(COMPILER) -shared -Wl,-soname,$(LIB).so -o $(LIB).so $(SRC_OBJS)
 
 # Build the object file corresponding to the the src file with the main function
 $(MAIN_OBJ) : %.o : $(SRC_DIR)/%.c
@@ -95,7 +101,7 @@ $(MAIN_OBJ) : %.o : $(SRC_DIR)/%.c
 # (each should have a corresponding header file)
 $(SRC_OBJS) : %.o : $(SRC_DIR)/%.c $(INC_DIR)/%.h
 	@echo Building $@
-	@$(COMPILER) $(CFLAGS) \
+	@$(COMPILER) $(CFLAGS) -FPIC \
 	$(INCLUDE_DIRS) $(LIB_DIRS) -c $< \
 	$(LINK_LIBS)
 	
