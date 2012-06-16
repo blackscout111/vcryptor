@@ -1,10 +1,13 @@
 from distutils.core import setup, Extension
+import os
+
+path = os.getcwd()
 
 module1 = Extension('vcryptor',
-                    include_dirs = ['inc/'],
+                    include_dirs = [path+'/inc/'],
                     libraries = ['vcryptor'],
-                    library_dirs = ['lib/'],
-                    sources = ['src/vcryptormodule.c'])
+                    library_dirs = [path+'/lib/'],
+                    sources = [path+'/src/vcryptormodule.c'])
 
 setup (name = 'vcryptor',
        version = '1.0',

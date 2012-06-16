@@ -16,13 +16,13 @@
 #===============================================================================
 
 # The directory containing the source files
-SRC_DIR = src
+SRC_DIR = $(shell pwd)/src
 
 # The directory containing the include files
-INC_DIR = inc
+INC_DIR = $(shell pwd)/inc
 
 # The directory containing the libraries made for this project
-LIB_DIR = lib
+LIB_DIR = $(shell pwd)/lib
 
 # Include directories
 INCLUDE_DIRS =	-I/usr/include \
