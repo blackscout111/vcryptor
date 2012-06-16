@@ -133,8 +133,8 @@ void transform(
 void cryption(
         const char* fileName,
         const char* password,
-        const char  do_encrypt    // If TRUE then the file will be encrypted
-        )                   // If FALSE then the file will be decrypted
+        const unsigned char  do_encrypt     // If TRUE then encryption
+        )                                   // If FALSE then decryption
 {
     // Pointer to file
     FILE *filePtr;
