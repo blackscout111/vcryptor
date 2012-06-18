@@ -171,20 +171,32 @@ class MainWindow(wx.Frame):
             self.pswdBox.SetWindowStyle(wx.TE_LEFT)
         else:
             self.pswdBox.SetWindowStyle(wx.TE_PASSWORD)
+
+    def TestOpen(self, FileName):
+        try:
+            f = open(FileName)
+            f.close()
+            return True
+        except Exception:
+            print "ERROR: could not open", FileName
+            self.StatusBar.SetStatusText("ERROR: could not open "+FileName)
+            return False
     
     def OnEncrypt(self, event):
         password = self.pswdBox.GetValue()
         fileName = self.fileBox.GetValue()
-        self.StatusBar.SetStatusText("Encrypting...")
-        vcryptor.cryption(fileName,password,True)
-        self.StatusBar.SetStatusText("Encryption Successful!")
+        if self.TestOpen(fileName):
+            self.StatusBar.SetStatusText("Encrypting...")
+            vcryptor.cryption(fileName,password,True)
+            self.StatusBar.SetStatusText("Encryption Successful!")
     
     def OnDecrypt(self, event):
         password = self.pswdBox.GetValue()
         fileName = self.fileBox.GetValue()
-        self.StatusBar.SetStatusText("Decrypting...")
-        vcryptor.cryption(fileName,password,False)
-        self.StatusBar.SetStatusText("Decryption Successful!")
+        if self.TestOpen(fileName):
+            self.StatusBar.SetStatusText("Decrypting...")
+            vcryptor.cryption(fileName,password,False)
+            self.StatusBar.SetStatusText("Decryption Successful!")
 
 
 
