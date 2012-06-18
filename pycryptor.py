@@ -119,14 +119,14 @@ class MainWindow(wx.Frame):
         msg  = "This is a simple tool that lets you encrypt a file with a\n"
         msg += "polyalphebetic cypher that's been extended to all ASCII\n"
         msg += "characters. It is by no means secure, but it was fun to make\n"
-        msg += "and can be fun to use too.\n"
+        msg += "and can be fun to use.\n"
         msg += "\n"
-        msg += "PLEASE NOTE:\n"
+        msg += "PLEASE NOTE\n"
         msg += "This tool will edit the binary of the file that it encrypts\n"
         msg += "or decrypts. If you forget the password or the order that you\n"
-        msg += "encrypt and decrypt a file you will have to either break the\n"
+        msg += "encrypt and decrypt a file, you will have to either break the\n"
         msg += "encryption algorithm or deal with the fact that your file has\n"
-        msg += "been destroyed!\n"
+        msg += "been turned to garbage.\n"
         msg += "\n"
         msg += "Have fun and be safe!"
         title = "About pycryptor"
@@ -142,7 +142,7 @@ class MainWindow(wx.Frame):
             wx.OK is a standard ID in wxWidgets
         """
         msg  = "To encrypt or decrypt a file, simply select the file, enter a\n"
-        msg += "password and then click on \"Encrypt\", or \"Decrypt\"."
+        msg += "password, and then click on \"Encrypt\", or \"Decrypt\"."
         title = "Using pycryptor"
         dlgID = wx.OK
         dlg = wx.MessageDialog(self, msg, title, dlgID)
