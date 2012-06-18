@@ -6,7 +6,8 @@ DESCRIPTION
 -----------
 vcryptor is a simple program that allows you to encrypt or decrypt a file based
 on a simple polyalphabetic key-word based cypher that has been extended to
-include all 256 ASCII characters.
+include all 256 ASCII characters. This project contains both a python based GUI 
+version and a command-line version of the program.
 
 Note: you can also decrypt unencrypted files to effectively encrypt them.
 
@@ -17,6 +18,7 @@ Installation is easy! Just perform the following commands in your terminal.
 
 > make
 > make clean
+
 > python setup.py build    # These last two lines install the python module
 > python setup.py install  # which allows you to use the cryption(...) function
                            # declared in vcryptor.h
@@ -24,8 +26,18 @@ Installation is easy! Just perform the following commands in your terminal.
 
 USAGE INSTRUCTIONS
 ------------------
-For usage instructions compile the program and run it with "- h" as an input.
-The instructions are quite straight forward.
+
+| Command-Line Usage |
+Type the following command in your terminal
+
+> ./vcryptor -h
+
+Usage instructions for the command-line version will be displayed
+
+| GUI Usage |
+Type the following command in your terminal
+
+> python pycryptor.py
 
 
 BEWARE
