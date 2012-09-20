@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import os
 import wx # The GUI API
 import vcryptor # The c code extension
