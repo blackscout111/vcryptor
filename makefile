@@ -88,7 +88,8 @@ $(LIB).a : $(SRC_OBJS)
 $(LIB).so : $(SRC_OBJS)
 	@mkdir -p $(LIB_DIR)
 	@echo Building $@
-	@$(COMPILER) -shared -Wl,-soname,$(LIB).so -o $(LIB).so $(SRC_OBJS)
+	#@$(COMPILER) -shared -Wl,-soname,$(LIB).so -o $(LIB).so $(SRC_OBJS) # for linux
+	@$(COMPILER) -shared -Wl,-install_name,$(LIB).so -o $(LIB).so $(SRC_OBJS) # for osx
 
 # Build the object file corresponding to the the src file with the main function
 $(MAIN_OBJ) : %.o : $(SRC_DIR)/%.c
@@ -101,7 +102,7 @@ $(MAIN_OBJ) : %.o : $(SRC_DIR)/%.c
 # (each should have a corresponding header file)
 $(SRC_OBJS) : %.o : $(SRC_DIR)/%.c $(INC_DIR)/%.h
 	@echo Building $@
-	@$(COMPILER) $(CFLAGS) -FPIC \
+	@$(COMPILER) $(CFLAGS) -fPIC \
 	$(INCLUDE_DIRS) $(LIB_DIRS) -c $< \
 	$(LINK_LIBS)
 	
